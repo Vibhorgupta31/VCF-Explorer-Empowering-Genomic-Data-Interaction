@@ -2,8 +2,7 @@ from dash import Dash,html,dcc, Input, Output
 import dash_bootstrap_components as dbc
 import pathlib
 import tiledbvcf
-
-# from dashApp import app
+from dash_app import app
 
 layout = html.Div([
             html.H1("Select tiledb dataset and add vcf files (if required)", style={'textAlign': 'center'}),
@@ -23,6 +22,6 @@ layout = html.Div([
         ])
 
 
-# @app.callback(Output("dataset_creation_report", "children"), [Input("vcf_path", "value")])
-# def render_page_content(vcf_path):
-#    return vcf_path
+@app.callback(Output("dataset_creation_report", "children"), [Input("vcf_path", "value")])
+def render_page_content(vcf_path):
+   return vcf_path

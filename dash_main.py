@@ -2,9 +2,7 @@ from dash import Dash,html,dcc, Input, Output
 import dash_bootstrap_components as dbc
 import pathlib
 import tiledbvcf
-
-app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-
+from dash_app import app
 from dataset_creation import layout as dataset_creation_layout
 
 

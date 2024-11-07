@@ -15,6 +15,7 @@ layout = html.Div([
                     html.Button('Submit', id='submit-val', n_clicks=0)
                 ]
             ),
+#             html.Div(id="placeholder"),
             dashbio.NeedlePlot(
                 id='dashbio-default-needleplot')
         ])
@@ -23,13 +24,15 @@ layout = html.Div([
 
 @callback(
     Output('dashbio-default-needleplot', 'mutationData'),
+#     Output('placeholder', 'children'),
     Input('submit-val', 'n_clicks'),
     State('filter_region', 'value'),
     prevent_initial_call=True
 )
 def plot_dataset(n_clicks, regions):
-    if n_clicks<=1:
-        raise PreventUpdate
+#     return n_clicks
+# #     if n_clicks<=1:
+# #         raise PreventUpdate
     dataset_path = pathlib.Path( "./Data")
     regionList = regions.strip()
     match = re.search(r"(?<=:)\d+", regionList)

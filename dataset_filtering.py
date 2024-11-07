@@ -8,7 +8,6 @@ layout = html.Div([
             html.H1("Enter region to filter (format should be chr:start:end or chr, comma seperated)", style={'textAlign': 'center'}),
             dbc.Row(
                 [
-                    dbc.Col('Path to tiledb dataset', width= 6),
                     dcc.Input(placeholder="20:1-50000", id= "filter_region", type='text'),
                     html.Button('Submit', id='submit-val', n_clicks=0)
                 ]

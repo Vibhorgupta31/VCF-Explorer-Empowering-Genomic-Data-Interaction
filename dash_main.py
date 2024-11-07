@@ -4,6 +4,7 @@ import pathlib
 import tiledbvcf
 from dash_app import app
 from dataset_creation import layout as dataset_creation_layout
+from dataset_filtering import layout as dataset_filtering_layout
 
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
@@ -36,7 +37,8 @@ sidebar = html.Div(
             [
                 dbc.NavLink("About", href="/", active="exact"),
                 dbc.NavLink("Create dataset", href="/page-1", active="exact"),
-                dbc.NavLink("Needle plot", href="/page-2", active="exact"),
+                dbc.NavLink("Filter dataset", href="/page-2", active="exact"),
+                dbc.NavLink("Needle plot", href="/page-3", active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -57,6 +59,8 @@ def render_page_content(pathname):
     elif pathname == "/page-1":
         return dataset_creation_layout
     elif pathname == "/page-2":
+        return dataset_filtering_layout
+    elif pathname == "/page-3":
         return html.P("Select gene for needle plot")
     # If the user tries to reach a different page, return a 404 message
     return html.Div(

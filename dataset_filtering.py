@@ -4,14 +4,20 @@ import pathlib
 import tiledbvcf
 from dash_app import app
 
-dataset_path = pathlib.Path( "./Data")
+dataset_path = pathlib.Path( "../onesample")
 
 ds = tiledbvcf.Dataset(str(dataset_path),"r")
 
 layout = html.Div([
-            html.H1("Enter region to filter (format should be chr:star-end or chr, comma seperated)", style={'textAlign': 'center'}),
+            html.H2("Filter and Analyze your data", style={"textAlign": "Left", "fontFamily": "Courier"}),
+            html.Hr(),
+            html.P("Enter region to filter (format should be chr:start:end or chr, comma seperated)", style={'textAlign': 'Left', 'fontFamily': 'Courier', 'size':'26 px'}),
             dcc.Input(placeholder="20:1-50000", id= "filter_region", type='text'),
-            dcc.Dropdown(id='sample-filter', options=list(ds.samples()), multi=True),
+            html.Br(),
+html.Br(),
+            html.P("Select specific sample ", style={'textAlign': 'Left', 'fontFamily': 'Courier', 'size':'26 px'}),
+            dcc.Dropdown(id='sample-filter', options=list(ds.samples()), multi=True,style={'textAlign': 'Left', 'fontFamily': 'Courier',}),
+html.Br(),
             html.Button('Submit', id='submit-val', n_clicks=0),
             dash_table.DataTable(id="table")
         ])

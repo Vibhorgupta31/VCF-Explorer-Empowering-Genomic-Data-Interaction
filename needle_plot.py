@@ -8,16 +8,16 @@ import re
 from dash.exceptions import PreventUpdate
 
 layout = html.Div([
-            html.H1("Enter region to plot (format should be chr:start,end)", style={'textAlign': 'center'}),
-            dbc.Row(
-                [
-                    dcc.Input(placeholder="20:1-50000", id= "filter_region", type='text'),
-                    html.Button('Submit', id='submit-val', n_clicks=0)
-                ]
-            ),
+            html.H2("Visualization", style={"textAlign": "Left", "fontFamily": "Courier"}),
+            html.Hr(),
+            html.H4("Needle Plot", style={'textAlign': 'Left',"fontFamily": "Courier"}),
+            html.P("Enter region to plot (format should be chr:start,end)",style={'textAlign': 'Left',"fontFamily": "Courier"}),
+            dcc.Input(placeholder="20:1-50000", id= "filter_region", type='text'),
+            html.Br(),
+            html.Button('Submit', id='submit-val', n_clicks=0),
 #             html.Div(id="placeholder"),
             dashbio.NeedlePlot(
-                id='dashbio-default-needleplot')
+                id='dashbio-default-needleplot', )
         ])
 
 # @app.callback(Output("filtered_datset", "children"), [Input("filter_region", "value")])
@@ -33,7 +33,7 @@ def plot_dataset(n_clicks, regions):
 #     return n_clicks
 # #     if n_clicks<=1:
 # #         raise PreventUpdate
-    dataset_path = pathlib.Path( "./Data")
+    dataset_path = pathlib.Path( "../onesample")
     regionList = regions.strip()
     match = re.search(r"(?<=:)\d+", regionList)
     start_location = int(match.group()) if match else 0

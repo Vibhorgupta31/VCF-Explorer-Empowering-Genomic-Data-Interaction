@@ -10,12 +10,17 @@ import shutil
 
 
 create_dataset =  html.Div([
-    dbc.Label("Directory to VCF Files: "),
-    dcc.Input(id = "files_directory", placeholder="Directory to VCF files"),
+    html.H2("Create your VCF dataset",style={"textAlign": "Left", "fontFamily":"Courier"}),
+    html.Hr(),
+    dbc.Label("Directory to VCF Files:  ", style={"textAlign": "Left", "fontFamily":"Courier"}),
+    dcc.Input(id = "files_directory", placeholder="Directory to VCF files", type = 'text',style={"textAlign": "Left", "fontFamily":"Courier"}),
     html.Br(),
-    dbc.Label("Dataset Name: "),
-    dcc.Input(id = "dataset", placeholder="Dataset Name ( Default : vcf_dataset )"),
-    html.Button('Submit', id='constants_update_submit', n_clicks=0),
+    html.Br(),
+    dbc.Label("Dataset Name:  ", style={"textAlign": "Left", "fontFamily":"Courier"}),
+    dcc.Input(id = "dataset", type="text", placeholder="Dataset Name ( Default : vcf_dataset )",style={"textAlign": "Left", "fontFamily":"Courier", "vspace":"10"}),
+    html.Br(),
+html.Br(),
+    html.Button('Submit', id='constants_update_submit', n_clicks=0, style={"FontFamily":"Courier"}),
     dcc.Loading(
         id="loading-1",
         type="default",
